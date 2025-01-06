@@ -1,0 +1,91 @@
+{% extends 'admin_navbar.html' %}
+{% load static %}
+{% block title %} Issue Book {% endblock %}
+{% block css %}
+<style>
+    body {
+        background-color: lavender;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin-top: -60px; /* Adjust this value based on your navbar height */
+    }
+    .card {
+        width: 100%;
+        max-width: 600px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        background-color: white;
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    .form-group label {
+        font-weight: bold;
+    }
+    .form-group input, .form-group select {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+    .btn-outline-primary {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #007bff;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+    }
+    .btn-outline-primary:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+</style>
+{% endblock %}
+{% block body %}
+<div class="container">
+    <div class="card">
+        <h2 class="text-center">Issue Book</h2>
+        <form method="POST"> {% csrf_token %}
+            {% for i in form %}
+            <div class="form-group">
+                <label class="control-label">{{ i.label_tag }}</label>
+                <div class="mt-2">
+                    {{ i }}
+                </div>
+            </div>
+            {% endfor %}
+            <button type="submit" class="btn btn-outline-primary mt-4">Issue Book</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+{% block js %}
+<script>
+    {% if book_not_available %}
+    alert("The book is not available in the library.")
+    document.location = "/issue_book"
+    {% endif %}
+
+    {% if book_already_issued %}
+    alert("The book is already issued to another student.")
+    document.location = "/issue_book"
+    {% endif %}
+
+    {% if alert %}
+    alert("Book Successfully Issued.")
+    document.location = "/issue_book"
+    {% endif %}
+</script>
+{% endblock %}

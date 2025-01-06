@@ -1,0 +1,85 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block title %}Book Nirvana{% endblock %}
+{% block css %}
+<style>
+    body {
+        background-color: #E6E6FA; /* Lavender shade */
+        color: #4B0082; /* Indigo for text */
+    }
+
+    .container-fluid {
+        text-align: center;
+    }
+
+    .btn-primary {
+        background-color: #9370DB; /* Medium Purple */
+        border-color: #6A5ACD; /* Slate Blue */
+    }
+
+    .btn-outline-primary {
+        color: #6A5ACD; /* Slate Blue */
+        border-color: #6A5ACD;
+    }
+
+    .btn-outline-primary:hover {
+        background-color: #6A5ACD;
+        color: #fff;
+    }
+
+    .center-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .image-container img {
+        width: 250px; /* Increased width */
+        height: 250px; /* Increased height */
+        object-fit: cover; /* Ensures uniform aspect ratio */
+        border-radius: 10px; /* Optional for rounded corners */
+        display: block;
+        margin: 0 auto; /* Center the image */
+    }
+
+    .button-container {
+        margin-top: 20px;
+    }
+</style>
+{% endblock %}
+{% block body %}
+<div class="p-4">
+    <div class="container-fluid py-3">
+        <h1 class="display-5 fw-bold">Welcome to Book Nirvana!</h1>
+        <div style="display: flex; justify-content: center; align-items: center; height: 10vh;">
+            <a href="/student_registration/" class="btn btn-primary btn-lg">Register as Student</a>
+        </div>
+    </div>
+    <br>
+    <div class="container">
+        <div class="row justify-content-center">
+            <!-- Admin Section -->
+            <div class="col-lg-6 center-content">
+                <div class="image-container">
+                    <img src="{% static 'admin1.png' %}" alt="Admin">
+                </div>
+                <div class="button-container">
+                    <a class="btn btn-outline-primary btn-lg" href="/admin_login/">Librarian</a>
+                </div>
+            </div>
+
+            <!-- Student Section -->
+            <div class="col-lg-6 center-content">
+                <div class="image-container">
+                    <img src="{% static 'students.png' %}" alt="Student">
+                </div>
+                <div class="button-container">
+                    <a class="btn btn-outline-primary btn-lg" href="/student_login/">Student</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
