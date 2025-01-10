@@ -1,7 +1,7 @@
 # jspm-fast_and_furious
 repository for Library Management system
 ReadMe file:
-About the Project
+# About the Project
 Library Management System Project created with Django. Developed web services using Python (Django Framework).
 
 Objective
