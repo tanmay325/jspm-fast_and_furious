@@ -6,79 +6,62 @@
     body {
         background-color: #E6E6FA; /* Lavender shade */
         color: #4B0082; /* Indigo for text */
+        margin: 0;
+    }
+
+    .main-content-wrapper {
+        height: calc(100vh - 60px); /* Adjust height, subtracting navbar height */
+        display: flex; /* Enable Flexbox */
+        justify-content: center; /* Horizontal alignment */
+        align-items: center; /* Vertical alignment */
     }
 
     .container-fluid {
         text-align: center;
     }
 
-    .btn-primary {
-        background-color: #9370DB; /* Medium Purple */
-        border-color: #6A5ACD; /* Slate Blue */
-    }
-
-    .btn-outline-primary {
-        color: #6A5ACD; /* Slate Blue */
-        border-color: #6A5ACD;
-    }
-
-    .btn-outline-primary:hover {
-        background-color: #6A5ACD;
-        color: #fff;
-    }
-
-    .center-content {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .image-container img {
-        width: 250px; /* Increased width */
-        height: 250px; /* Increased height */
-        object-fit: cover; /* Ensures uniform aspect ratio */
-        border-radius: 10px; /* Optional for rounded corners */
-        display: block;
-        margin: 0 auto; /* Center the image */
-    }
-
-    .button-container {
+    .quote {
+        font-size: 1.5rem;
+        font-style: italic;
         margin-top: 20px;
+        opacity: 0;
+        animation: fadeIn 1s ease-in-out forwards;
+    }
+
+    .quote:nth-child(1) {
+        animation-delay: 1s;
+    }
+
+    .quote:nth-child(2) {
+        animation-delay: 2s;
+    }
+
+    .quote:nth-child(3) {
+        animation-delay: 3s;
+    }
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 </style>
 {% endblock %}
 {% block body %}
-<div class="p-4">
-    <div class="container-fluid py-3">
+<div class="main-content-wrapper">
+    <div class="container-fluid">
         <h1 class="display-5 fw-bold">Welcome to Book Nirvana!</h1>
-        <div style="display: flex; justify-content: center; align-items: center; height: 10vh;">
-            <a href="/student_registration/" class="btn btn-primary btn-lg">Register as Student</a>
-        </div>
-    </div>
-    <br>
-    <div class="container">
-        <div class="row justify-content-center">
-            <!-- Admin Section -->
-            <div class="col-lg-6 center-content">
-                <div class="image-container">
-                    <img src="{% static 'admin1.png' %}" alt="Admin">
-                </div>
-                <div class="button-container">
-                    <a class="btn btn-outline-primary btn-lg" href="/admin_login/">Librarian</a>
-                </div>
-            </div>
-
-            <!-- Student Section -->
-            <div class="col-lg-6 center-content">
-                <div class="image-container">
-                    <img src="{% static 'students.png' %}" alt="Student">
-                </div>
-                <div class="button-container">
-                    <a class="btn btn-outline-primary btn-lg" href="/student_login/">Student</a>
-                </div>
-            </div>
+        
+        <!-- Book-related Quotes -->
+        <div class="quotes mt-4">
+            <div class="quote">"In every library, there is a single book to answer the question that burns like a fire in the mind." – Olivia Caliban</div>
+            <div class="quote">"So many books, so little time." – Frank Zappa</div>
+            <div class="quote">"The only thing that you absolutely have to know is the location of the library." – Albert Einstein</div>
         </div>
     </div>
 </div>

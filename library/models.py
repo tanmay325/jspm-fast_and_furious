@@ -10,14 +10,14 @@ class Book(models.Model):
     category = models.CharField(max_length=50)
 
     def __str__(self):
-        return str(self.name) + " ["+str(self.isbn)+']'
+        return str(self.name)
     
 class Student(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     classroom = models.CharField(max_length=10)
     branch = models.CharField(max_length=10)
     roll_no = models.CharField(max_length=3, blank=True)
-    phone = models.CharField(max_length=10, blank=True)
+    phone = models.PositiveIntegerField(blank=True)
     image = models.ImageField(upload_to="", blank=True)
 
     def __str__(self):
