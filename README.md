@@ -42,3 +42,13 @@ Technologies used:
 ●	Database: dbSQLite3
 
 Books in homepage will show status of issued , issue requested or request issue based on whether the book is issued or requested for a issue or is not requested for logged-in students only.
+
+-Required to install packages commands
+1. pip install django
+2. pip install djangorestframework
+3. pip install pillow
+
+-Commads to execute project
+1. python manage.py makemigrations
+2. python manage.py migrate
+3. python manage.py runserver
